@@ -1,0 +1,132 @@
+<div class="row my-5 justify-content-center px-3">
+  <div class="col text-center">
+    <div class="form-group">
+      <label for="profileImg">
+        <img
+          [src]="
+            user.imgUrl ||
+            'http://www.gravatar.com/avatar/61dc3c45c69df368f1a4452b3c4843bb?s=200&r=pg&d=mm'
+          "
+          alt=""
+          class="img-fluid rounded-circle"
+          width="100"
+          height="100"
+        />
+        <a class="d-block">Change Photo</a>
+      </label>
+      <input
+        type="file"
+        id="profileImg"
+        accept="image/*"
+        class="form-control"
+        (change)="onUpload($event)"
+        name="user.imgUrl"
+        style="display: none"
+      />
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <p class="alert alert-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </p>
+    <p class="alert alert-success" *ngIf="successMessage">
+      {{ successMessage }}
+    </p>
+    <form novalidate>
+      <div class="form-group row">
+        <label class="col-3" for="">First Name</label>
+        <input
+          type="text"
+          class="form-control form-control-sm col"
+          [(ngModel)]="user.fname"
+          [ngClass]="errors.fname ? 'is-invalid' : ''"
+          name="fname"
+        />
+        <div class="invalid-feedback">{{ errors.fname }}</div>
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="">Last Name</label>
+        <input
+          type="text"
+          class="form-control form-control-sm col"
+          [(ngModel)]="user.lname"
+          [ngClass]="errors.lname ? 'is-invalid' : ''"
+          name="lname"
+        />
+        <div class="invalid-feedback">{{ errors.lname }}</div>
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="">Date of Birth</label>
+        <input
+          type="date"
+          class="form-control form-control-sm col"
+          [(ngModel)]="user.dob"
+          [ngClass]="errors.dob ? 'is-invalid' : ''"
+          name="dob"
+        />
+        <div class="invalid-feedback">{{ errors.dob }}</div>
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="">Gender</label>
+        <div class="form-check">
+          <input
+            type="radio"
+            class="form-check-input"
+            [(ngModel)]="user.gender"
+            name="gender"
+            value="Male"
+          />
+          <label for="" class="form-check-label mr-2">Male</label>
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            class="form-check-input"
+            [(ngModel)]="user.gender"
+            name="gender"
+            value="Female"
+          />
+          <label for="" class="form-check-label">Female</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="">Email </label>
+        <input
+          type="email"
+          class="form-control form-control-sm col"
+          [(ngModel)]="user.email"
+          [ngClass]="errors.email ? 'is-invalid' : ''"
+          name="email"
+        />
+        <div class="invalid-feedback">{{ errors.email }}</div>
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="">Mobile</label>
+        <input
+          type="text"
+          class="form-control form-control-sm col"
+          [(ngModel)]="user.mobile"
+          [ngClass]="errors.mobile ? 'is-invalid' : ''"
+          name="mobile"
+        />
+        <div class="invalid-feedback">{{ errors.mobile }}</div>
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="">Bio</label>
+        <textarea
+          name="bio"
+          class="form-control form-control-sm col"
+          [(ngModel)]="user.bio"
+        ></textarea>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-info mr-5" (click)="onSubmit()" type="button">
+          Submit
+        </button>
+        <button class="btn btn-secondary" type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row mt-5"></div>
